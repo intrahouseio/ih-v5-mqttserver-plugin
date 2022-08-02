@@ -1,0 +1,104 @@
+{
+  "grid": [
+    { "id": "p1", "xs": 4, "class": "main", "table": "units" },
+    { "id": "p2", "xs": 4, "class": "main", "table": "units" },
+    { "id": "p3", "xs": 4, "class": "main", "table": "units" },
+    { "id": "p9", "xs": 12, "class": "main", "table": "unitsTreeTable", "height": "fill" }
+  ],
+
+  "spacing": 10,
+  "breadcrumbs": { "tree": "plugins" },
+
+  "p1": [
+    {
+      "prop": "mqtt",
+      "title": "Протокол mqtt",
+      "type": "cb",
+      "default": true
+    },
+    {
+      "prop": "portmqtt",
+      "title": "$portmqtt",
+      "type": "input",
+      "default": "1883",
+      "hide": "!data.p1.mqtt"
+    },
+    {
+      "prop": "mqtts",
+      "title": "Протокол mqtts",
+      "type": "cb",
+      "default": false
+    },
+    {
+      "prop": "portmqtts",
+      "title": "$portmqtts",
+      "type": "input",
+      "default": "8883",
+      "hide": "!data.p1.mqtts"
+    },
+    {
+      "prop": "key",
+      "title": "Private KEY file path",
+      "type": "input",
+      "default": "/",
+      "hide": "!data.p1.mqtts"
+    },
+    {
+      "prop": "cert",
+      "title": "Public CERT file path",
+      "type": "input",
+      "default": "/",
+      "hide": "!data.p1.mqtts"
+    },
+    {
+      "prop": "mqttws",
+      "title": "Протокол mqtts",
+      "type": "cb",
+      "default": false
+    },
+    {
+      "prop": "portmqttws",
+      "title": "$portmqttws",
+      "type": "input",
+      "default": "8888",
+      "hide": "!data.p1.mqttws"
+    }
+    
+
+  ],
+  "p2": [
+    {
+      "prop": "use_password",
+      "title": "$use_password",
+      "type": "cb",
+      "default": 0
+    }
+  ],
+  "p3": [
+    {
+      "prop": "restarttime",
+      "title": "$Unit_Restarttime",
+      "type": "input",
+      "default": 5
+    },
+    { "prop": "loglevel", "title": "$LogLevel", "type": "droplist", "data": "loglevelList" },
+    { "prop": "txt", "title": "$Comment", "type": "input" }
+  ],
+  "p9": [
+    {
+      "title": "",
+      "type": "table",
+      "prop": "unitsTreeTable",
+
+      "columns": [
+        { "prop": "name", "title": "$name", "type": "text", "width": 150 },
+        { "prop": "state", "title": "$state", "type": "text", "width": 150 },
+        { "prop": "laststart", "title": "$laststart", "type": "text", "width": 150 },
+        { "prop": "laststop", "title": "$laststop", "type": "text", "width": 150 },
+        { "prop": "uptime", "title": "$uptime", "type": "text", "width": 150 },
+        { "prop": "error", "title": "$error", "type": "text", "width": 250 }
+      ]
+    }
+  ]
+
+}
