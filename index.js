@@ -12,8 +12,8 @@ const app = require('./app');
 
   try {
     // Получить каналы для подписки
-    plugin.channels = await plugin.channels.get();
-    plugin.log('Received channels...');
+    //plugin.channels = await plugin.channels.get();
+    //plugin.log('Received channels...');
 
     // Получить каналы для публикации
     //plugin.extraChannels = await plugin.extra.get();

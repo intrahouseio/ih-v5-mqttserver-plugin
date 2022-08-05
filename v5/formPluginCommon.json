@@ -12,26 +12,26 @@
   "p1": [
     {
       "prop": "mqtt",
-      "title": "Протокол mqtt",
+      "title": "Protocol MQTT",
       "type": "cb",
       "default": true
     },
     {
       "prop": "portmqtt",
-      "title": "$portmqtt",
+      "title": "Port MQTT",
       "type": "input",
       "default": "1883",
       "hide": "!data.p1.mqtt"
     },
     {
       "prop": "mqtts",
-      "title": "Протокол mqtts",
+      "title": "Protocol MQTT over TLS",
       "type": "cb",
       "default": false
     },
     {
       "prop": "portmqtts",
-      "title": "$portmqtts",
+      "title": "Port MQTTS",
       "type": "input",
       "default": "8883",
       "hide": "!data.p1.mqtts"
@@ -52,13 +52,13 @@
     },
     {
       "prop": "mqttws",
-      "title": "Протокол mqtts",
+      "title": "Protocol MQTT over websocket",
       "type": "cb",
       "default": false
     },
     {
       "prop": "portmqttws",
-      "title": "$portmqttws",
+      "title": "Port MQTTWS",
       "type": "input",
       "default": "8888",
       "hide": "!data.p1.mqttws"
@@ -72,6 +72,20 @@
       "title": "$use_password",
       "type": "cb",
       "default": 0
+    },
+    {
+      "prop": "username",
+      "title": "$login",
+      "type": "input",
+      "default": "login",
+      "hide": "!data.p2.use_password"
+    },
+    {
+      "prop": "password",
+      "title": "$password",
+      "type": "password",
+      "default": "password",
+      "hide": "!data.p2.use_password"
     }
   ],
   "p3": [
