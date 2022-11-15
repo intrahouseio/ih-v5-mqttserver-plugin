@@ -2,5 +2,5 @@
     "id":"mqttserver",
     "description":"MQTT server",
     "cross":true,
-    "version":"5.5.1"
+    "version":"5.5.2"
 }
