@@ -73,13 +73,13 @@ module.exports = function(plugin) {
   
   aedes.on('publish', function (packet, client) {
     if (client) {
-      plugin.log('message from client ' + client.id +' packet ' + packet, 2);
+      plugin.log('message from client ' + client.id +' packet ' + util.inspect(packet), 2);
     }
   })
   
   aedes.on('subscribe', function (subscriptions, client) {
     if (client) {
-      plugin.log('subscribe from client' + subscriptions + client.id, 2);
+      plugin.log('subscribe from client ' + util.inspect(subscriptions) + " " +  client.id, 2);
     }
   })
   
