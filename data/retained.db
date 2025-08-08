@@ -1,0 +1,1 @@
+{"cmd":"publish","brokerId":"1ae7f2ef-1089-4172-8354-cd6e84452b60","brokerCounter":1261,"topic":"/test","payload":{"type":"Buffer","data":[55,52]},"qos":2,"retain":true,"dup":false,"_id":"hrWZvGaQtUdpsSPI"}

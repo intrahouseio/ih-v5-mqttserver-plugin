@@ -1,0 +1,27 @@
+{
+  "grid": [
+    {
+      "id": "p1",
+      "xs": 12,
+      "class": "main",
+      "table": "unitextTable",
+      "height": "fill"
+    }
+  ],
+  "spacing": 10,
+  "p1": [
+    {
+      "title": "Users",
+      "type": "table",
+      "prop": "unitextTable",
+      "popupenable": true,
+
+      "columns": [
+        { "prop": "username", "title": "Username", "type": "input", "width": 150 },
+        { "prop": "password", "title": "Password", "type": "input", "width": 150 },
+        { "prop": "readTopics", "title": "Read Topics", "type": "input", "width": 300 },
+        { "prop": "writeTopics", "title": "Write Topics", "type": "input", "width": 300 }
+      ]
+    }
+  ]
+}

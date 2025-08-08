@@ -1,0 +1,4 @@
+{"clientId":"mqttjs_58291eeb","packet":{"retain":false,"qos":0,"topic":"/writetest/status","payload":{"type":"Buffer","data":[100,105,115,99,111,110,110,101,99,116,101,100]},"clientId":"mqttjs_58291eeb","brokerId":"44567e60-d98f-4940-8f32-61658b0c2e10"},"_id":"KKS1b4R8lddCKEmy"}
+{"clientId":"mqttjs_54009cae","packet":{"retain":false,"qos":0,"topic":"status","payload":{"type":"Buffer","data":[100,105,115,99,111,110,110,101,99,116,101,100]},"clientId":"mqttjs_54009cae","brokerId":"44567e60-d98f-4940-8f32-61658b0c2e10"},"_id":"ncxETPBrudaKhZyX"}
+{"clientId":"mqttjs_b41f1d9c","packet":{"retain":false,"qos":0,"topic":"status","payload":{"type":"Buffer","data":[100,105,115,99,111,110,110,101,99,116,101,100]},"clientId":"mqttjs_b41f1d9c","brokerId":"706c2661-7d9b-4c70-b6f0-e721544840f8"},"_id":"whBnpPAzzPGooHDP"}
+{"$$deleted":true,"_id":"whBnpPAzzPGooHDP"}

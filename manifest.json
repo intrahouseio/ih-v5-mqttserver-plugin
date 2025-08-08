@@ -1,7 +1,7 @@
 {
   "description": "MQTT server V5.5",
   "single":0,
-  "extratab":0,
+  "extratab":1,
   "nochannels":1,
   "ext": 
     [
