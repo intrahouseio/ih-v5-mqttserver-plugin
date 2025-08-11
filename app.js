@@ -3,12 +3,11 @@ const fs = require('fs').promises;
 const NedbPersistence = require('aedes-persistence-nedb');
 const aedes = require('aedes')({ persistence: new NedbPersistence() });
 
-
 module.exports = async function (plugin) {
   const params = plugin.params;
   // Хранилище пользователей
   let users = [];
-
+  plugin.log('params ' + util.inspect(params))
   // Функция для загрузки пользователей из вкладки "Расширения"
   async function loadUsers() {
     try {
@@ -16,7 +15,7 @@ module.exports = async function (plugin) {
         users.push({
           username: params.username,
           password: params.password,
-          readTopic: ['#'],
+          readTopics: ['#', '$SYS/#'],
           writeTopics: ['#']
         })
       }
@@ -101,15 +100,30 @@ module.exports = async function (plugin) {
 
     // Авторизация подписки
     aedes.authorizeSubscribe = (client, subscription, callback) => {
-      plugin.log(`Checking publish for ${util.inspect(client.id)} (username: ${client?.username}) on topic ${packet.topic}`, 2);
-      const user = users.find(u => u.username === client?.username);
-      if (!user) {
-        const error = new Error('Unauthorized subscribe');
-        error.returnCode = 5;
-        plugin.log(`Subscribe denied for ${client.id} on topic ${subscription.topic}`, 2);
-        return callback(error);
-      }
-      const isAllowed = user.readTopics.some(topic =>
+        plugin.log(`Checking subscribe for ${client?.id} (username: ${client?.username}) on topic ${subscription.topic}`, 2);
+
+        if (!client?.username) {
+          const error = new Error('Client not authenticated');
+          error.returnCode = 5;
+          return callback(error);
+        }
+
+        const user = users.find(u => u.username === client.username);
+        if (!user) {
+          const error = new Error('User not found');
+          error.returnCode = 5;
+          return callback(error);
+        }
+
+        // Если у пользователя нет readTopics - запрещаем всё
+        if (!user.readTopics || !Array.isArray(user.readTopics)) {
+          const error = new Error('No subscriptions allowed');
+          error.returnCode = 5;
+          return callback(error);
+        }
+
+        // Проверяем каждый паттерн из разрешённых
+        const isAllowed = user.readTopics.some(topic =>
         topic === subscription.topic || new RegExp('^' + topic.replace(/\+/g, '[^/]+').replace(/#/g, '.*') + '$').test(subscription.topic)
       );
       if (isAllowed) {
@@ -226,7 +240,6 @@ module.exports = async function (plugin) {
   plugin.onStop(async () => {
     plugin.log('Stopping MQTT broker', 2);
     await new Promise(resolve => aedes.close(resolve));
-    server.close();
     plugin.exit(0, 'Plugin stopped');
   });
 };
